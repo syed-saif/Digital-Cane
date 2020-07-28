@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block cont %}
+{% if val%}
+
+<center><h2 class="hex">Welcome to team Hexagous' CAPTCHA page!</h2>
+<p>Here's your question : </p>
+<p class="q">{{logicq}} </p>
+<p class= "ap">Now imagine the answer as some position.</p>
+<p>Enter the word at that position, from the list given below:</p>
+<p class= "q">
+{% for item in wordq %}
+<span>{{item}} {% if not loop.last %},{% endif %}</span>
+{% endfor %}
+
+</p>
+<form action="/?a={{lqa}}" method="POST">
+  <input name="text">
+  <input type="submit" value="submit">
+</form>
+</center>
+{% else %}
+<center>
+{%if result== "Success"%}
+<h2>Success!</h2>
+<p>CAPTCHA has been verified!<p>
+<p>redirecting....</p>
+</center>
+{%else%}
+<h2>oops!  </h2>
+<p>CAPTCHA not verified! Please <a href="http://127.0.0.1:5000/">try again</a> <p>
+{% endif %}
+{% endif %}
+
+{% endblock%}
