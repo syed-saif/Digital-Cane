@@ -35,10 +35,7 @@ def rwords():
 @app.route("/",methods = ['GET','POST'])
 def hi():
     if request.method == 'POST':
-        filename = '/media/moinudeen/OS/SP/SIH /templates/cap.html'
-        f = open(filename, "r").read()
-        soup = BeautifulSoup(f)
-
+        
         s = request.form['text']
         if 'a' in request.args:
             a = request.args['a']
@@ -47,12 +44,6 @@ def hi():
         result = "Success" if s.strip()== bytearray.fromhex(x).decode().strip() else "Failed"
 
         return render_template('cap.html',title = "Result",result = result)
-
-
-
-    filename = '/media/moinudeen/OS/SP/SIH /templates/cap.html'
-    f = open(filename, "r").read()
-    soup = BeautifulSoup(f)
 
 
     logicq = random.choice(qlist)
